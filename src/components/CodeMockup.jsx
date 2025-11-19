@@ -21,7 +21,6 @@ const CodeMockup = () => {
             color: "text-white"
         },
         { type: "typing", prefix: "$", text: "node hello.js", color: "text-white" },
-        { type: "status", prefix: ">", text: "Hello, World!", color: "text-green-500" },
         { type: "status", prefix: ">", text: "Program executed successfully 🚀", color: "text-blue-400" },
         { type: "link", prefix: ">", text: "Local: http://localhost:3000", color: "text-blue-500" }, // link clicável
     ];
@@ -82,7 +81,6 @@ const CodeMockup = () => {
                     background: "rgba(0,0,0,0.3)",
                     backdropFilter: "blur(10px)",
                     WebkitBackdropFilter: "blur(10px)",
-                    height: "400px", // altura fixa
                     width: "400px",
                     overflowY: "auto", // scroll interno
                 }}
@@ -134,37 +132,43 @@ const CodeMockup = () => {
             <AnimatePresence>
                 {modalOpen && (
                     <motion.div
-                        className="fixed inset-0 flex items-center justify-center z-50"
+                        className="fixed inset-0 flex items-center justify-center z-50 p-4 sm:p-6 backdrop-blur-md bg-black/60"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                     >
                         <motion.div
-                            className="rounded-xl w-3/4 h-4/5  relative p-4"
+                            className="relative w-full max-w-3xl h-full sm:h-[80%] rounded-xl p-2 sm:p-4"
                             initial={{ scale: 0.8 }}
                             animate={{ scale: 1 }}
                             exit={{ scale: 0.8 }}
                         >
-
-
-                            <div className="mockup-browser border bg-base-200 w-full h-full mt-6 rounded-lg overflow-hidden">
-                                <div className="mockup-browser-toolbar bg-base-200 p-2">
-                                    <div className="input">http://localhost:3000</div>
+                            <div className="mockup-browser border bg-black w-full h-full rounded-lg overflow-hidden flex flex-col">
+                                {/* Barra do mockup */}
+                                <div className="mockup-browser-toolbar bg-black p-2 relative flex justify-between items-center">
+                                    <div className="input text-sm sm:text-base truncate">
+                                        http://localhost:3000
+                                    </div>
                                     <button
-                                        className="absolute top-2 right-3 font-bold text-xl"
+                                        className="absolute top-2 right-3 font-bold text-xl hover:text-red-500 transition-colors"
                                         onClick={() => setModalOpen(false)}
                                     >
                                         ×
                                     </button>
                                 </div>
-                                <div className="grid place-content-center h-full text-2xl font-bold">
-                                   <h1 class="text-4xl font-bold text-green-500">Hello, World!</h1>
+
+                                {/* Conteúdo central */}
+                                <div className="flex-1 grid place-content-center text-center px-2">
+                                    <h1 className="text-3xl sm:text-4xl font-bold text-green-500">
+                                        Hello, World!
+                                    </h1>
                                 </div>
                             </div>
                         </motion.div>
                     </motion.div>
                 )}
             </AnimatePresence>
+
         </div>
     );
 };

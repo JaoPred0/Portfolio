@@ -5,6 +5,26 @@
   themes: black --default;
 }
 
+html,
+body {
+  scroll-behavior: smooth;
+}
+
 * {
   font-family: "Elms Sans", sans-serif;
+}
+
+/* 🔥 Esconde scrollbar 100% em TUDO dentro dessa classe */
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  /* IE e Edge */
+  scrollbar-width: none !important;
+  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  width: 0px !important;
+  height: 0px !important;
+  display: none !important;
+  background: transparent !important;
 }
