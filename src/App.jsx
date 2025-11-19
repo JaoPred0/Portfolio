@@ -1,6 +1,6 @@
 import React from "react";
 import FloatingLines from "./components/bits/FloatingLines";
-import Navbar from "./components/navbar";
+import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 
 const App = () => {
